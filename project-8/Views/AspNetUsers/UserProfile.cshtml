@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<project_8.Models.AspNetUser>
+
+
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        color: #000;
+    }
+
+    .student-profile .card {
+        border-radius: 10px;
+    }
+
+        .student-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .student-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .student-profile .card p {
+            font-size: 16px;
+            color: #000;
+        }
+
+    .student-profile .table th,
+    .student-profile .table td {
+        font-size: 14px;
+        padding: 5px 10px;
+        color: #000;
+    }
+</style>
+
+@foreach (var item in Model)
+{
+    <div class="card shadow-sm">
+        <div class="card-header bg-transparent text-center">
+            <img class="profile_img" src="@Html.DisplayFor(modelItem => item.img)" alt="">
+            <h3>
+                @Html.DisplayFor(modelItem => item.Name)
+            </h3>
+        </div>
+        <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">Student ID:</strong>@Html.DisplayFor(modelItem => item.ID_number)</p>
+            <p class="mb-0"><strong class="pr-1">Major:</strong>@Html.DisplayFor(modelItem => item.Major.Name)</p>
+            <p class="mb-0"><strong class="pr-1">Phone Number:</strong>@Html.DisplayFor(modelItem => item.PhoneNumber)</p>
+            <p class="mb-0"><strong class="pr-1">Email:</strong>@Html.DisplayFor(modelItem => item.Email)</p>
+            <p class="mb-0"><strong class="pr-1">Date of birth:</strong>@String.Format("{0:MM/dd/yyyy}", item.birthday)</p>
+        </div>
+    </div>
+}
+
+
+

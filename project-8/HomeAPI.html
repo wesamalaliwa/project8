@@ -1,0 +1,41 @@
+﻿<style>
+    .box {
+        display: flex;
+    }
+</style>
+
+<div id="tb" style=" display:flex; justify-content:space-between;"></div>
+<script>async function read() {
+            try {
+                const api = "https://localhost:44398/api/FaculitiesAPI";
+                const res = await fetch(api);
+
+                const data = await res.json();
+                console.log("hello");
+                console.log(data);
+                readdata(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        function readdata(data) {
+            document.getElementById('tb').innerHTML = ""
+            for (let i = 0; i < data.length; i++)
+
+            {
+
+                document.getElementById('tb').innerHTML += `
+                                    <div class ="col-md-4 box" >
+                                        <div class="course align-self-stretch">
+                                            <a href="#" class="img" style="background-image: url(../images/${data[i].img})"></a>
+                                            <div class="text p-4">
+
+                                                <h3 class="mb-3"><a href="#">${data[i].Name}</a></h3>
+                                                <p>${data[i].description}</p>
+                                                <p><a href="https://localhost:44398/Majors/Majors/${data[i].Id}" class="btn btn-primary">Enroll now!</a></p>
+                                            </div>
+                                        </div>
+                                    </div> `;
+            }
+        }
+        read();</script>

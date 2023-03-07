@@ -1,0 +1,68 @@
+﻿@model project_8.Models.Class
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}   
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Class</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Courses_id, "Courses_id", htmlAttributes: new { @class = "control-label col-md-2" , style = "text-align: left;width: 110px;" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Courses_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Courses_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2" , style = "text-align: left;width: 110px;" })
+                <div class="col-md-10">
+                   @* @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                    @Html.DropDownListFor(model => model.Time, new List<SelectListItem>
+             {
+                 new SelectListItem{Text = "08:00", Value="08:00:00"},
+                 new SelectListItem{Text = "09:30", Value="09:30:00"},
+                 new SelectListItem{Text = "11:00", Value="11:00:00"},
+                 new SelectListItem{Text = "12:30", Value="12:30:00"},
+                 new SelectListItem{Text = "02:00", Value="02:00:00"}
+             }, "Select Time", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Create")
+    </div>
+</body>
+</html>

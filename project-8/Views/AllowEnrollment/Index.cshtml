@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Semester Joining Fees</h2>
+<hr />
+<div class="ser" style="width:100%;overflow:auto">
+    @using (Html.BeginForm("Index", "AllowEnrollment", FormMethod.Get))
+
+    {
+        @Html.TextBox("search")
+        <input type="Submit" value="search" class="btn btn-light" />
+    }
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <span>UserName</span>
+        </th>
+        <th>
+            <span>Charge</span>
+        </th>
+
+        <th>
+            <span>Action</span>
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.data)
+    {
+
+        <tr>
+            <td>
+                <span>@item.UserName</span>
+                @*@Html.LabelFor(m=>m.User_name)*@
+            </td>
+            <td>
+                <span>250</span>
+                @*@Html.LabelFor(m => m.charge)*@
+            </td>
+            <td>
+                @*@Html.ActionLink("Pay", "Paid", new { id = item.Id, userName = item.UserName }, new { @class = "btn btn-success" })*@
+                <div>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pay</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            @*Modal content*@
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>
+                                        Are You Sure ?
+                                    </h3>
+                                </div>
+                                <div class="modal-footer">
+                                    @Html.ActionLink("Save", "Paid", new { id = item.Id, userName = item.UserName }, new { @class = "btn btn-success" })
+
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+

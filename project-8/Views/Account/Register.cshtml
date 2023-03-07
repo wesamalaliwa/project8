@@ -1,0 +1,209 @@
+﻿@model project_8.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<style>
+    body {
+        background-image: linear-gradient(to top, #dbdcdd 0%, #ffffff 100%);
+    }
+</style>
+<hr />
+<div class="container">
+
+    <br />
+    <div class="container shadow px-4 py-4 bg-white">
+
+
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <br />
+            <h4 style="text-align:center; font-weight:800">University registration system</h4>
+            <br />
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            <div class="row ">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Full Name</label>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-4 control-label" })
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Phone Number</label>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(m => m.Accountant, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(m => m.Accountant, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Acceptance, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(m => m.Acceptance, new { @class = "form-control" })
+                        </div>
+                    </div>*@
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">National Number</label>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.ID_number, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Tawjihi Average</label>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.AVG, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Date of Birth</label>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.birthday, new { @class = "form-control", type = "date" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Personal Photo</label>
+                        <div class="col-md-12">
+                            <input type="file" class="form-control" name="image2" accept="image/png, image/jpeg, image/jpg" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Personal Identity</label>
+                        <div class="col-md-12">
+                            <input type="file" class="form-control" name="id_img" accept="image/png, image/jpeg, image/jpg, application/pdf" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Tawjihi Certificate</label>
+                        <div class="col-md-12">
+                            <input type="file" class="form-control" name="certificate_img" accept="image/png, image/jpeg, image/jpg, application/pdf" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @*@{
+                            List<SelectListItem> items = new List<SelectListItem>();
+                            foreach (var item in ViewBag.majors)
+                            {
+                                items.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+                            }
+                        }
+                        @Html.LabelFor(m => m.Major, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(m => m.Major, items, "Select Major", new { @class = "form-control" })
+                        </div>*@
+                        @Html.LabelFor(m => m.Major, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-12">
+
+                            <select name="sel" class="form-control">
+                                @*<option>Select Major</option>*@
+
+                                @foreach (var item in @ViewBag.majors)
+                                {
+                                    if (Session["id"] != null)
+                                    {
+
+                                        if (item.Id == Convert.ToInt32(@Session["id"].ToString()))
+                                        {
+                                            <option value="@item.Id" selected>@item.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+            <br />
+            <div class="form-group d-flex justify-content-center">
+                <div class="col-md-6">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Register" style="width:100%; border-radius:0px" onclick="showAlert()" />
+                </div>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <div class="col-md-6">
+                    <a class="btn btn-outline-primary btn-lg" style="width:100%; border-radius:0px" href="/Majors/AllMajors">Cancel</a>
+                </div>
+            </div>
+
+            <p class="text-center">
+                @Html.ActionLink("Are you Student? Login", "Login")
+            </p>
+
+        }
+
+
+
+    </div>
+    <br />
+</div>
+

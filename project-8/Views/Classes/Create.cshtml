@@ -1,0 +1,106 @@
+﻿@model project_8.Models.Class
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Classes</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2" style="text-align:left;width:150px;" for="Courses_id">Courses Name</label>
+
+                <div class="col-md-10">
+                    @Html.DropDownList("Courses_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Courses_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Time, htmlAttributes: new { @class = "control-label col-md-2", style = "text-align: left;width: 150px;" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Time, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.DropDownListFor(m => m.Time, new List<SelectListItem>
+               {
+                   new SelectListItem{Text = "08:00", Value="08:00:00"},
+                   new SelectListItem{Text = "09:30", Value="09:30:00"},
+                   new SelectListItem{Text = "11:00", Value="11:00:00"},
+                   new SelectListItem{Text = "12:30", Value="12:30:00"},
+                   new SelectListItem{Text = "02:00", Value="02:00:00"}
+               }, "Select Time", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.Time, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <hr />
+
+    <div class="ser" style="width:100%;overflow:auto">
+        @using (Html.BeginForm("Create", "Classes", FormMethod.Get))
+
+        {
+            @Html.TextBox("search")
+            <input type="Submit" value="search" class="btn btn-light" />
+        }
+    </div><br />
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                <span>Time</span>
+            </th>
+            <th>
+                <span>Course Name</span>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.classe)
+        {
+            <tr>
+                <td>
+                    <span>@item.Time</span>
+
+                </td>
+                <td>
+                    <span>@item.Cours.Name</span>
+                </td>
+                <td>
+
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

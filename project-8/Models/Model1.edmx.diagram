@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="86a6b91c643a4637a8cd1f6db8c70450" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="project8Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.AspNetRole" Width="1.5" PointX="5.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.AspNetUserClaim" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.AspNetUserLogin" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.AspNetUserRole" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.AspNetUser" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.Class" Width="1.5" PointX="12.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.class_Accepted" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.Classification" Width="1.5" PointX="8" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.Cours" Width="1.5" PointX="10.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.Faculity" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.Major" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.Student_Class" Width="1.5" PointX="10.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.student_payments" Width="1.5" PointX="7.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="project8Model.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="project8Model.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__class_Acc__User___7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__Student_C__User___571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__student_p__User___02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK_AspNetUsers_Major" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__Class__Courses_i__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__Student_C__Class__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__Courses__Classif__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__Courses__Major_i__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="project8Model.FK__Major__Faculity___4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

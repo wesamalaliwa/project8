@@ -1,0 +1,116 @@
+﻿@model project_8.Models.Faculity
+
+@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    @*<a href="~/Views/Shared/_Layout1.cshtml">~/Views/Shared/_Layout1.cshtml</a>*@
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm("Create", "Faculities", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Faculity</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2", style = "text-align: left;width: 110px;" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2", style = "text-align: left;width: 110px;" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 "  style="text-align: left;width: 110px;" for="img">img</label>
+                <div class="col-md-10">
+                    <input class=" text-box single-line" id="img" name="img" type="file" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="img" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <br />
+    <br />
+
+    <div class="ser" style="width:100%;overflow:auto">
+        @using (Html.BeginForm("Create", "Faculities", FormMethod.Get))
+
+        { 
+            @Html.TextBox("search")
+            <input type="Submit" value="search" class="btn btn-light" />
+        }
+    </div><br />
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.Faculity)
+        {
+            <tr>
+                <td>
+                    <span>@item.Name</span>
+                </td>
+                <td>
+                    <span>@item.description</span>
+                </td>
+                <td>
+                    <img src="../images/@item.img" alt="" style="width:100px;height:100px" class="thumbnail" />
+                    @*<span>@item.img</span>*@
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+
+
+
+
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+</body>
+</html>

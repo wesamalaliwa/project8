@@ -1,0 +1,113 @@
+﻿@model IEnumerable<project_8.Models.student_payments>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+        color: #000;
+        background-image: linear-gradient(to top, #dbdcdd 0%, #ffffff 100%);
+    }
+
+    .student-profile .card {
+        border-radius: 10px;
+    }
+
+        .student-profile .card .card-header .profile_img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 10px solid #ccc;
+            border-radius: 50%;
+        }
+
+        .student-profile .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .student-profile .card p {
+            font-size: 16px;
+            color: #000;
+        }
+
+    .student-profile .table th,
+    .student-profile .table td {
+        font-size: 14px;
+        padding: 5px 10px;
+        color: #000;
+    }
+</style>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div class="student-profile py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+
+                @Html.Action("UserProfile", "AspNetUsers")
+
+            </div>
+
+
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <div class="container shadow px-4 py-4 bg-white">
+                            <table class="table table-hover table-responsive-sm">
+                                <tr>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.User_name)
+                                        </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.payment)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.description)
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                                        </th>
+                                        <th></th>*@
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.User_name)
+                                            </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.payment)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.description)
+                                        </td>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                                                @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                                            </td>*@
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

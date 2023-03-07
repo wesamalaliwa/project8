@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "AllMajors";
+}
+
+
+<div class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_2.jpg'); background-attachment:fixed;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-8 ftco-animate text-center">
+                <p class="breadcrumbs"><span class="mr-2"><a href="/Home/Index">Home</a></span> <span>Majors</span></p>
+                <a href="#Majors"><h1 class="mb-3 bread">Majors</h1></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section" id="Majors">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 d-flex ftco-animate">
+                    <div class="course align-self-stretch">
+                        <a href="#" class="img" style="background-image: url(/images/@item.img)"></a>
+                        <div class="text p-4">
+                            <p class="category"><span>price</span> <span class="price">@item.Price</span>$</p>
+                            <h3 class="mb-3"><a href="#">@item.Name</a></h3>
+                            <p>@item.Description</p>
+                            @Html.ActionLink("Enroll now!", "RegButton", "Account", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            @*<p><a href="#" class="btn btn-primary">Enroll now!</a></p>*@
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</section>
+
